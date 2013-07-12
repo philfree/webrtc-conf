@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#msgDisPt{
+	margin-top:10px; 
+	padding: 10px;
+	border: 1px solid rgb(229, 229, 229);
+	background-color: rgb(245, 245, 245);
+}
+#msgDisPt span{
+	padding: 10px;
+}
+</style>
+<!-- <script src='jquery-1.7.2.min.js'></script>	 -->
+<!--  For now url path is hardcoded -->
+<script src="http://192.168.1.7:4000/socket.io/socket.io.js"></script>
+
+</head>
+<body>
+
+
+<section id='videoSection'>
+
+<video id='localVideo' width="320" height="240" controls autoplay></video>
+
+<input type='button' id='callButton' value='Call'/>
+<input type='button' id='hangupButton' value='HangUp'/>
+<video id='remoteVideo' width="320" height="240" controls autoplay></video>
+</section>
+
+<section id='msgSection'>
+<textarea id='clientMsgTxt'></textarea>
+<input type='button' id='clientMsgButton' value='Send'/>
+
+</section>
+<section id='msgDisPt'>
+
+
+</section>
+<!-- <input type='button' id='startButton' value='Start'/>
+<input type='button' id='stopButton' value='Stop'/> -->
+
+</body>
+<!-- <script src='webrtc.js'></script> -->
+
+<script src='testsocket.js'></script>
+</html>
+
+
+
+
+
+
+
+
+
+
