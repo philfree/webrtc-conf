@@ -1,7 +1,7 @@
 var app = require('http').Server()
   , io = require('socket.io').listen(app);
   app.listen(4000);
-
+var room;
 io.sockets.on('connection', function (socket) {
   // socket.emit('news', { hello: 'world' });
   // socket.on('create or join', function (room) {
@@ -26,13 +26,20 @@ io.sockets.on('connection', function (socket) {
   //  socket.on('offer',function(offer){
   // 	socket.broadcast.emit('offer', offer);
   // });
-socket.emit('connect','connectiontest');
+  //socket.emit('connect','connectiontest');
+  socket.on('join',function(val,fn){
+    socket.join(val);
+    room=val;
+    fn('You joined the room:- '+val+' '+'socket id:-'+socket.id);
+    socket.broadcast.to(val).emit('join_info_all','New member has joined group');
+    //io.sockets.in(val).emit('event_name', data)
+  });
  socket.on('message', function(message) {
       console.dir('<<<<<<<<check>>>>>>'+message);
-        socket.broadcast.emit('message', message);
+        socket.broadcast.to(room).emit('message', message);
     });
  socket.on('chatmsg',function(msg){
-   socket.broadcast.emit('chatmsg', msg);
+   socket.broadcast.to(room).emit('chatmsg', msg);
  });
 
 

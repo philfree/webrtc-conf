@@ -2,51 +2,116 @@
 <html>
 <head>
 <style>
+body{
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+padding: 0.5em;
+}
 #msgDisPt{
-	margin-top:10px; 
-	padding: 10px;
-	border: 1px solid rgb(229, 229, 229);
+	margin-bottom:1em; 	
+}
+.common-background{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 0.1em solid rgb(229, 229, 229);
 	background-color: rgb(245, 245, 245);
+	padding: 0.5%;
+}
+.first-second{
+	margin-right: 0.5%;	
+
 }
 #msgDisPt span{
 	padding: 10px;
 }
+/*#bigVideoScreen{
+	display:flex;
+}*/
+#usersList{
+	width: 14%;
+	float: left;
+}
+#VideoSection{
+	width: 59%;
+	float: left;
+	text-align: center;
+}
+#msgSection{
+	width: 22.5%;
+	float: left;
+	
+}
+#VideoChat{
+	overflow:hidden;
+}
+/*#localVideoSection{
+	text-align: center;
+}*/
+#remoteVideo{
+	width: 100%;
+}
+#localVideo{
+	width: 25%;	
+}
+#clientMsgTxt{
+	width: 100%;
+	 
+	border-radius: 6px;
+	outline: none;
+}
+#clientMsgTxt:focus{
+	border-width: 2px;
+	border-color: blue;
+}
 </style>
 <!-- <script src='jquery-1.7.2.min.js'></script>	 -->
 <!--  For now url path is hardcoded -->
-<script src="http://192.168.1.7:4000/socket.io/socket.io.js"></script>
+<script src="http://192.168.1.5:4000/socket.io/socket.io.js"></script>
 
 </head>
 <body>
+<header>
 
-
-<section id='videoSection'>
-
-<video id='localVideo' width="320" height="240" controls autoplay></video>
-
-<input type='button' id='callButton' value='Call'/>
-<input type='button' id='hangupButton' value='HangUp'/>
-<video id='remoteVideo' width="320" height="240" controls autoplay></video>
-</section>
-
-<section id='msgSection'>
-<textarea id='clientMsgTxt'></textarea>
-<input type='button' id='clientMsgButton' value='Send'/>
+</header>
+<article id='VideoChat'>
+<aside id='usersList' class='common-background first-second'>
+	<input type='button' id='callButton' value='Call'/>
+	<input type='button' id='hangupButton' value='HangUp'/>
+</aside>
+<div id='VideoSection' class='common-background first-second'>
+<section id='remoteVideoSection'>
+<video id='remoteVideo' autoplay></video>
 
 </section>
+<section id='localVideoSection'>
+<video id='localVideo' autoplay></video>
+<video id='remoteVideo2' autoplay></video>
+</section>
+</div>
+<aside id='msgSection' class='common-background'>
 <section id='msgDisPt'>
-
-
+<h3>Heading</h3>
 </section>
+<section id='msginput'>
+<!-- <input type='text' id='clientMsgTxt' /> -->
+<textarea rows=5 id='clientMsgTxt'> </textarea>
+<!-- <input type='button' id='clientMsgButton' value='Send'/> -->
+</section>
+</aside>
+</article>
+
 <!-- <input type='button' id='startButton' value='Start'/>
 <input type='button' id='stopButton' value='Stop'/> -->
 
+<footer>
+
+</footer>
 </body>
 <!-- <script src='webrtc.js'></script> -->
 
 <script src='testsocket.js'></script>
 </html>
-
 
 
 
