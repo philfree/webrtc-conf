@@ -32,20 +32,23 @@ function setWH(video, i) {
   //var perColumn = Math.ceil(videos.length / perRow);
  // var width = Math.floor((window.innerWidth) / perRow);
  // var height = Math.floor((window.innerHeight - 190) / perColumn);
-  var width = Math.floor((window.innerWidth) / 4);
-  var height = Math.floor((window.innerHeight) / 4);
-  video.width = width;
-  video.height = height;
+  var dim=Math.floor(window.innerHeight/4);
+  video.width = dim;
+  video.height = 0.75*dim;
   video.style.position = "absolute";
-  video.style.left = (i % perRow) * width + "px";
-  video.style.top = Math.floor(i / perRow) * height + "px";
+  //video.style.left = (i % perRow) * width + "px";
+  video.style.left = '';
+  video.style.right = '2px';
+  //video.style.top = Math.floor(i / perRow) * height + "px";
+  video.style.bottom = Math.floor(i* 0.75*dim)+ 2 + "px";
 }
 
 function cloneVideo(domId, socketId) {
   var video = document.getElementById(domId);
   var clone = video.cloneNode(false);
   clone.id = "remote" + socketId;
-  document.getElementById('videos').appendChild(clone);
+  //document.getElementById('videos').appendChild(clone);
+  document.getElementById('smallScreenVideos').appendChild(clone);
   videos.push(clone);
   return clone;
 }
@@ -182,8 +185,14 @@ function init() {
       "video": {"mandatory": {}, "optional": []},
       "audio": true
     }, function(stream) {
-      document.getElementById('you').src = URL.createObjectURL(stream);
-      document.getElementById('you').play();
+      var you=document.getElementById('you');
+        
+        var dim=Math.floor(window.innerHeight/4); 
+        you.width = dim;
+        you.height = 0.75*dim;
+      you.src = URL.createObjectURL(stream);
+
+      you.play();
       //videos.push(document.getElementById('you'));
       //rtc.attachStream(stream, 'you');
       //subdivideVideos();

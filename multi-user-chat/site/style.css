@@ -126,15 +126,20 @@ header.heading #roomInfo img{
 #videos{
   border: 0.1em solid  #eeeeee;
   padding: 0.2em;
-  position: relative;
-  height: 85%;
+  /*position: relative;
+  */
+
+
 }
 /*#videos #largeScreenVideo{
 
 }*/
 #videos #smallScreenVideos{
-  /*display: inline;*/
+ 
   width: 30%;
+  overflow-y: scroll;
+  position: relative;
+  height: 85%;
 }
 header{
   background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 100%);
@@ -146,9 +151,12 @@ header{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00eeeeee',GradientType=0 );
 }
 #videos #smallScreenVideos video{
-border: 0.5em solid #eeeeee;
+border: 4px solid #eeeeee;
 
 }
 #videos #largeScreenVideo{
+  float: left;
   width: 70%;
+  position: relative;
+  height: 85%;
 }
