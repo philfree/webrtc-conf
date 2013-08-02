@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Multi User Chat</title>
+    <link type="text/css" href="/style.css" rel="stylesheet"></link>
+
+    <script src="/webrtc.io.js"></script>
+  </head>
+  <body onload="init()">
+   <!--  <div id="videos">
+      <video id="you" autoplay width="263" height="200" style="position: absolute; left: 0px; bottom: 0px;" controls></video> 
+      <!-- removed class="flip" -->
+     <!-- </div> -->
+
+
+   <!--  <div id="chatbox">
+      <div id="hideShowMessages" class="button">toggle chat</div>
+      <div id="messages">
+      </div>
+      <input id="chatinput" type="text" placeholder="Message:"/>
+    </div> -->
+
+    <!-- <div class="buttonBox"> -->
+      <!-- <div id="fullscreen" class="button">Enter Full Screen</div> -->
+      <!-- <div id="newRoom" class="button" title='Create New Room'><img src="/home-icon.png" alt="Create New Room" width='30' height='30'></div>
+    </div> -->
+    <header class="heading">
+      <nav id='roomInfo' title='Create New Room'>
+        <img id="newRoom" src="/home-icon.png" alt="Create New Room"/>
+        
+        <span>Room Name : </span>
+      
+      </nav>
+
+      
+    </header>
+    <section id='videos'>
+    <section id='largeScreenVideo'>
+    </section>
+    <aside id='smallScreenVideos'>
+      
+      <video id="you" autoplay width="263" height="200" style="position: absolute; right: 0.2em; bottom: 0.2em;" controls></video> 
+      
+    </aside>
+    </section>
+    <script src="/script.js"></script>
+  </body>
+</html>
