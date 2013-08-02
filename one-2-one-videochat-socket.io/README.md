@@ -1,4 +1,0 @@
-webrtc-conf
-===========
-
-WebRTC conference
