@@ -190,9 +190,8 @@ function init() {
         var dim=Math.floor(window.innerHeight/4); 
         you.width = dim;
         you.height = 0.75*dim;
-      you.src = URL.createObjectURL(stream);
-
-      you.play();
+        you.src = URL.createObjectURL(stream);
+        you.play();
       //videos.push(document.getElementById('you'));
       //rtc.attachStream(stream, 'you');
       //subdivideVideos();

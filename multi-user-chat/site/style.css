@@ -70,7 +70,7 @@ body {
   
   z-index: 1;
 }*/
-.button {
+/*.button {
   -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
   -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
   box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -103,7 +103,7 @@ body {
 .button:active {
   position:relative;
   top:1px;
-}
+}*/
 header.heading{
   border: 0.1em solid #eeeeee;
   padding: 0.2em; 
@@ -114,7 +114,7 @@ header.heading #roomInfo{
   font-size: 1.2em;
   padding: 0.7em;
   vertical-align: top;
-  height: 5%;
+  min-height: 30px;
 }
 header.heading #roomInfo img{
   vertical-align: middle;
@@ -124,11 +124,24 @@ header.heading #roomInfo img{
   cursor: pointer;
  }
 #videos{
-  border: 0.1em solid  #eeeeee;
-  padding: 0.2em;
-  /*position: relative;
-  */
-
+  /*border: 0.1em solid  #eeeeee;*/
+  /*padding: 0.2em;*/
+   /*text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+   text-justify: distribute-all-lines;*/
+  position: relative;
+  min-width: 960px;
+  min-height: 700px;
+  margin: 0 auto;
+  border: 10px solid #fafafa;
+  padding: 5px;
+  background: #4e4e4e;
+  overflow: visible;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Color=#4e4e4e, direction=120, strength=5)";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Color=#4e4e4e, direction=120, strength=5);
 
 }
 /*#videos #largeScreenVideo{
@@ -138,8 +151,13 @@ header.heading #roomInfo img{
  
   width: 30%;
   overflow-y: scroll;
-  position: relative;
-  height: 85%;
+  /*position: absolute;
+  height: 100%;*/
+  float: right;
+  /*position: absolute;*/
+  
+  /*height:auto;*/
+
 }
 header{
   background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 100%);
@@ -157,6 +175,7 @@ border: 4px solid #eeeeee;
 #videos #largeScreenVideo{
   float: left;
   width: 70%;
-  position: relative;
-  height: 85%;
+  /*position: absolute;
+  height: 100%;*/
+  /*height: auto;*/
 }
