@@ -25,6 +25,10 @@ app.get('/script.js', function(req, res) {
   res.sendfile(__dirname + '/script.js');
 });
 
+app.get('/jquery.10.1.js', function(req, res) {
+  res.sendfile(__dirname + '/jquery.10.1.js');
+});
+  
 app.get('/webrtc.io.js', function(req, res) {
   res.sendfile(__dirname + '/webrtc.io.js');
 });

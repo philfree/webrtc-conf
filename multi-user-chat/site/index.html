@@ -2,7 +2,7 @@
   <head>
     <title>Multi User Chat</title>
     <link type="text/css" href="/style.css" rel="stylesheet"></link>
-
+       <script src="/jquery.10.1.js"></script>
     <script src="/webrtc.io.js"></script>
   </head>
   <body onload="init()">
@@ -35,7 +35,8 @@
     </header>
     <section id='videos'>
     <section id='largeScreenVideo'>
-      <video id="you" autoplay style="position: absolute; left: 2px; bottom: 2px;" controls></video>
+      <video id="you" autoplay style="position: absolute; left: 5px; top: 5px;z-index:1000" controls></video>
+      <video id='remote-large' autoplay controls style='display:none;'></video>
     </section>
     <aside id='smallScreenVideos'>
       

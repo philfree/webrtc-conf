@@ -130,8 +130,8 @@ header.heading #roomInfo img{
   -ms-text-justify: distribute-all-lines;
    text-justify: distribute-all-lines;*/
   position: relative;
-  min-width: 960px;
-  min-height: 700px;
+  width: 960px;
+  height:500px;
   margin: 0 auto;
   border: 10px solid #fafafa;
   padding: 5px;
@@ -150,13 +150,14 @@ header.heading #roomInfo img{
 #videos #smallScreenVideos{
  
   width: 30%;
-  overflow-y: scroll;
+  overflow-y: auto;
   /*position: absolute;
   height: 100%;*/
   float: right;
   /*position: absolute;*/
   
-  /*height:auto;*/
+  height:100%;
+  position: relative;
 
 }
 header{
@@ -168,14 +169,20 @@ header{
   background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00eeeeee',GradientType=0 );
 }
-#videos #smallScreenVideos video{
+#videos #smallScreenVideos video,#you{
 border: 4px solid #eeeeee;
 
 }
 #videos #largeScreenVideo{
   float: left;
   width: 70%;
+  height: 100%;
+  /*position: absolute;
+  height:700px; */
   /*position: absolute;
   height: 100%;*/
   /*height: auto;*/
+}
+#remote-large{
+ border: 6px solid #eeeeee; 
 }

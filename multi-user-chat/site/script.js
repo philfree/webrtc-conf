@@ -40,7 +40,7 @@ function setWH(video, i) {
   video.style.left = '';
   video.style.right = '2px';
   //video.style.top = Math.floor(i / perRow) * height + "px";
-  video.style.bottom = Math.floor(i* 0.75*dim)+ 2 + "px";
+  video.style.top = Math.floor(i* 0.75*dim)+ 2 + "px";
 }
 
 function cloneVideo(domId, socketId) {
@@ -58,6 +58,12 @@ function removeVideo(socketId) {
   if(video) {
     videos.splice(videos.indexOf(video), 1);
     video.parentNode.removeChild(video);
+    console.log(video.src.toString());
+    if(video.src.toString()===document.getElementById('remote-large').src.toString()){ //need to be change the condition
+
+      $('#remote-large').attr('src',$('#you').attr('src'));
+    }
+      
   }
 }
 
@@ -192,6 +198,7 @@ function init() {
         you.height = 0.75*dim;
         you.src = URL.createObjectURL(stream);
         you.play();
+        largeVideo(you);
       //videos.push(document.getElementById('you'));
       //rtc.attachStream(stream, 'you');
       //subdivideVideos();
@@ -202,15 +209,71 @@ function init() {
 
 
   var room = window.location.hash.slice(1);
-
+  $('#roomInfo span').append(room);
   rtc.connect("ws:" + window.location.href.substring(window.location.protocol.length).split('#')[0], room);
 
   rtc.on('add remote stream', function(stream, socketId) {
     console.log("ADDING REMOTE STREAM...");
     var clone = cloneVideo('you', socketId);
-    document.getElementById(clone.id).setAttribute("class", "");
+    document.getElementById(clone.id).setAttribute("class", "remote");
     rtc.attachStream(stream, clone.id);
     subdivideVideos();
+    largeVideo(clone);
+    // document.querySelectorAll('#smallScreenVideos .remote').onclick=function(){
+    //   console.log('remote onclick');
+    //   if(document.querySelector('#largeScreenVideo .remote')){
+    //     var remoteLargeVideo=document.querySelector('#largeScreenVideo .remote');
+    //     document.getElementById('smallScreenVideos').appendChild(remoteLargeVideo);
+    //     videos.push(remoteLargeVideo);
+    //     remoteLargeVideo.parentNode.removeChild(remoteLargeVideo);
+    //   }
+    //   var video = this;
+    //     if(video) {
+    //       videos.splice(videos.indexOf(video), 1);
+    //       video.parentNode.removeChild(video);
+    //       video.style.position='';
+    //       video.style.top='';
+    //       video.width='';
+    //       video.height='';
+    //       video.style.width='74%';
+    //       video.style.height='100%';
+    //       document.getElementById('largeScreenVideo').appendChild(video);
+    //       video.play();
+    //     }
+    //  subdivideVideos();
+          
+    // };
+    // $('#smallScreenVideos video[id^="remote"]').click(function(e){
+     
+    //   if($('#largeScreenVideo video[id^="remote"]').length){
+    //     var remoteLargeVideo=$('#largeScreenVideo video[id^="remote"]');
+
+    //     $('#smallScreenVideos').append(remoteLargeVideo);
+        
+    //     videos.push(remoteLargeVideo);
+    //     $(remoteLargeVideo).parent().remove(remoteLargeVideo);
+    //   }
+    //   alert(this.id);
+    //   var video = this;
+    //     if(video) {
+    //       videos.splice(videos.indexOf(video), 1);
+          
+    //       $(video).css({'position':'','top':'','width':'74%','height':'100%'});
+         
+    //       $(video).attr({'width':'','height':''});
+
+    //       $('#largeScreenVideo').append(video);
+          
+          
+    //       $(video).get(0).play();
+    //       $(this).remove();
+    //     }
+    //  subdivideVideos();    
+    // });
+  $('#smallScreenVideos video[id^="remote"]').click(function(){
+      console.log('remote onclick');
+      largeVideo(this);
+      });
   });
   rtc.on('disconnect stream', function(data) {
     console.log('remove ' + data);
@@ -221,6 +284,24 @@ function init() {
  // initChat();
 }
 
+//   $(document).ready(function(){
+
+//   $('.remote').on('click',function(){
+//     alert('tes');
+//     // var large=document.getElementById('remote-large');
+//     // large.src=this.src;
+//     // large.style.display='block';
+//     // this.style.visibility='hidden';
+//   });
+// });
+
+$('#you').click(function(){
+  largeVideo(this);
+});
+function largeVideo(current){
+      $('#remote-large').attr('src',$(current).attr('src'));
+      $('#remote-large').css({'display':'block','width':'95%','height':'95%'});
+}
 window.onresize = function(event) {
   subdivideVideos();
 };
