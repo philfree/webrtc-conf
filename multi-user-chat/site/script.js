@@ -63,7 +63,7 @@ function removeVideo(socketId) {
 
       $('#remote-large').attr('src',$('#you').attr('src'));
     }
-      
+      subdivideVideos();
   }
 }
 
