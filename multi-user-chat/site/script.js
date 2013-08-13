@@ -32,15 +32,18 @@ function setWH(video, i) {
   //var perColumn = Math.ceil(videos.length / perRow);
  // var width = Math.floor((window.innerWidth) / perRow);
  // var height = Math.floor((window.innerHeight - 190) / perColumn);
-  var dim=Math.floor(window.innerHeight/4);
-  video.width = dim;
-  video.height = 0.75*dim;
+  var smallSideWidth=parseInt($('#videos').css('width').slice(0,-2));
+  var height=Math.floor(smallSideWidth*0.25*0.75);
+  var width=Math.floor(smallSideWidth*0.25);
+  //console.log('test:-'+width+'height:-'+height);  
+  video.style.width = width;
+  video.style.height = height;
   video.style.position = "absolute";
   //video.style.left = (i % perRow) * width + "px";
   video.style.left = '';
   video.style.right = '2px';
   //video.style.top = Math.floor(i / perRow) * height + "px";
-  video.style.top = Math.floor(i* 0.75*dim)+ 2 + "px";
+  video.style.top = Math.floor(i* height)+ 2 + "px";
 }
 
 function cloneVideo(domId, socketId) {
@@ -96,6 +99,12 @@ function initNewRoom() {
   var button = document.getElementById("newRoom");
 
   button.addEventListener('click', function(event) {
+    newRoomLogic();
+    
+    
+  });
+}
+function newRoomLogic(){
 
     var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
     var string_length = 8;
@@ -107,8 +116,8 @@ function initNewRoom() {
 
     window.location.hash = randomstring;
     location.reload();
-  })
 }
+
 //chat
 
 // var websocketChat = {
@@ -207,8 +216,11 @@ function init() {
     alert('Your browser is not supported or you have to turn on flags. In chrome you go to chrome://flags and turn on Enable PeerConnection remember to restart chrome');
   }
 
-
+   if(!window.location.hash){
+     newRoomLogic();
+  }
   var room = window.location.hash.slice(1);
+
   $('#roomInfo span').append(room);
   rtc.connect("ws:" + window.location.href.substring(window.location.protocol.length).split('#')[0], room);
 
@@ -300,7 +312,7 @@ $('#you').click(function(){
 });
 function largeVideo(current){
       $('#remote-large').attr('src',$(current).attr('src'));
-      $('#remote-large').css({'display':'block','width':'95%','height':'95%'});
+      $('#remote-large').css({'display':'block','max-width':'100%','height':'auto','border':'0.4em solid #eeeeee'});
 }
 window.onresize = function(event) {
   subdivideVideos();
