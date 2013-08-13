@@ -1,6 +1,20 @@
-var app = require('http').Server()
-  , io = require('socket.io').listen(app);
-  app.listen(4000);
+var app=require('express')(),
+    server = require('http').createServer(app)
+  , io = require('socket.io').listen(server);
+  server.listen(4000);
+
+
+
+
+app.get('/', function(req, res) {
+  res.sendfile(__dirname + '/index.html');
+});
+app.get('/testsocket.js', function(req, res) {
+  res.sendfile(__dirname + '/testsocket.js');
+});
+
+
+
 var room;
 io.sockets.on('connection', function (socket) {
   // socket.emit('news', { hello: 'world' });

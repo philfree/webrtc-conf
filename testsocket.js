@@ -31,7 +31,7 @@ navigator.getUserMedia = navigator.getUserMedia ||  navigator.webkitGetUserMedia
 
  }
  //var room=prompt("Enter room number:-");
- var socket = io.connect('http://192.168.1.5:4000/');//hard coded ip
+ var socket = io.connect('http://192.168.1.14:4000/');//hard coded ip
  var channelReady = false;
 //chat part
 var msgDisPt=document.getElementById("msgDisPt");
@@ -43,13 +43,13 @@ function chat(e){
   if(clientMsgTxt.value!='' && e.keyCode == 13){
      console.dir(socket);
      socket.emit('chatmsg',{'val':clientMsgTxt.value,'soc_id':socket.socket.sessionid}); 
-     msgDisPt.innerHTML = msgDisPt.innerHTML + '<span>'+ socket.socket.sessionid +' :&nbsp;'+ clientMsgTxt.value +'</span><br/>';
+     msgDisPt.innerHTML = msgDisPt.innerHTML + '<span class="'+ socket.socket.sessionid +'"">Client :&nbsp;'+ clientMsgTxt.value +'</span><br/>';
      clientMsgTxt.value='';
   } 
 }
 socket.on('chatmsg',function(msg){
 
-msgDisPt.innerHTML = msgDisPt.innerHTML + '<span>'+msg.soc_id+'&nbsp;'+ msg.val +'</span><br/>';
+msgDisPt.innerHTML = msgDisPt.innerHTML + '<span class="'+msg.soc_id+'">Remote :&nbsp;'+ msg.val +'</span><br/>';
 });
 //end
 
@@ -123,6 +123,8 @@ function stop(){
   started=false;
   peerConn.close();
   peerConn=null;
+  remoteVideo.src ='';
+
 }
 function setLocalAndSendMessage(sessionDescription) {
   peerConn.setLocalDescription(sessionDescription);
