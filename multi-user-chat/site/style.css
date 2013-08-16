@@ -17,6 +17,26 @@ body {
   background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00eeeeee',GradientType=0 );*/
 }
+/*@media screen and (min-width: 1224px){
+  #videos{
+  width: 960px;
+  height:500px;
+  }
+}*/
+/*smartphone potrait*/
+/*@media screen and (max-width: 320px){
+  #videos{
+  width: 300px;
+  height:156px;
+  }
+}*/
+/*smartphone landscape*/
+/*@media screen and (min-width: 321px){
+  #videos{
+  width: 320px;
+  height:166px;
+  }
+}*/
 
 /*#videos {
   position: absolute;
@@ -114,7 +134,7 @@ header.heading #roomInfo{
   font-size: 1.2em;
   padding: 0.7em;
   vertical-align: top;
-  min-height: 30px;
+  /*min-height: 30px;*/
 }
 header.heading #roomInfo img{
   vertical-align: middle;
@@ -130,16 +150,16 @@ header.heading #roomInfo img{
   -ms-text-justify: distribute-all-lines;
    text-justify: distribute-all-lines;*/
   position: relative;
-  width: 960px;
-  height:500px;
+  width: 52%;
+  height:53%;
   margin: 0 auto;
-  border: 10px solid #fafafa;
-  padding: 5px;
+  border: 0.7em solid #fafafa;
+  padding: 0.3em;
   background: #4e4e4e;
-  overflow: visible;
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  overflow: hidden;
+  -moz-box-shadow: 0 0 0.7em rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 0 0.7em rgba(0,0,0,0.2);
+  box-shadow: 0 0 0.7em rgba(0,0,0,0.2);
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Color=#4e4e4e, direction=120, strength=5)";
   filter: progid:DXImageTransform.Microsoft.Shadow(Color=#4e4e4e, direction=120, strength=5);
 
@@ -157,9 +177,10 @@ header.heading #roomInfo img{
   /*position: absolute;*/
   
   height:100%;
-  position: relative;
+  /*position: relative;*/
 
 }
+
 header{
   background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(238,238,238,0)));
@@ -170,19 +191,23 @@ header{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00eeeeee',GradientType=0 );
 }
 #videos #smallScreenVideos video,#you{
-border: 4px solid #eeeeee;
+border: 0.3em solid #eeeeee;
 
 }
 #videos #largeScreenVideo{
   float: left;
-  width: 70%;
+  width:70%;
   height: 100%;
+  overflow-y:auto;
+  
   /*position: absolute;
   height:700px; */
   /*position: absolute;
   height: 100%;*/
   /*height: auto;*/
 }
-#remote-large{
- border: 6px solid #eeeeee; 
-}
+/*#remote-large{
+ border: 0.4em solid #eeeeee; 
+ width: 100% !important;
+  height: auto !important;
+}*/

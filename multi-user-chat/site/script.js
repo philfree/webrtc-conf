@@ -32,18 +32,23 @@ function setWH(video, i) {
   //var perColumn = Math.ceil(videos.length / perRow);
  // var width = Math.floor((window.innerWidth) / perRow);
  // var height = Math.floor((window.innerHeight - 190) / perColumn);
-  var smallSideWidth=parseInt($('#videos').css('width').slice(0,-2));
-  var height=Math.floor(smallSideWidth*0.25*0.75);
-  var width=Math.floor(smallSideWidth*0.25);
+  // var smallSideWidth=parseInt($('#videos').css('width').slice(0,-2));
+  // var height=Math.floor(smallSideWidth*0.25*0.75);
+  // var width=Math.floor(smallSideWidth*0.25);
   //console.log('test:-'+width+'height:-'+height);  
-  video.style.width = width;
-  video.style.height = height;
-  video.style.position = "absolute";
+  //video.style.maxWidth='100%';
+  //video.style.width = width;
+  // video.style.height = 'auto';
+  // video.style.position = "";
+  // video.style.top='';
   //video.style.left = (i % perRow) * width + "px";
-  video.style.left = '';
-  video.style.right = '2px';
+  // video.style.left = '';
+  // video.style.display = 'block';
+ // video.style.right = '2px';
   //video.style.top = Math.floor(i / perRow) * height + "px";
-  video.style.top = Math.floor(i* height)+ 2 + "px";
+ // video.style.top = Math.floor(i* height)+ 2 + "px";
+video.setAttribute('style','max-width:90%;height:auto;display:block;');
+
 }
 
 function cloneVideo(domId, socketId) {
@@ -61,12 +66,12 @@ function removeVideo(socketId) {
   if(video) {
     videos.splice(videos.indexOf(video), 1);
     video.parentNode.removeChild(video);
-    console.log(video.src.toString());
-    if(video.src.toString()===document.getElementById('remote-large').src.toString()){ //need to be change the condition
+    //console.log(video.src.toString());
+    // if(video.src.toString()===document.getElementById('remote-large').src.toString()){ //need to be change the condition
 
-      $('#remote-large').attr('src',$('#you').attr('src'));
-    }
-      subdivideVideos();
+    //   $('#remote-large').attr('src',$('#you').attr('src'));
+    // }
+      //subdivideVideos();
   }
 }
 
@@ -202,12 +207,13 @@ function init() {
     }, function(stream) {
       var you=document.getElementById('you');
         
-        var dim=Math.floor(window.innerHeight/4); 
-        you.width = dim;
-        you.height = 0.75*dim;
+        //var dim=Math.floor(window.innerHeight/4); 
+        you.style.maxWidth = '100%';
+        you.style.height = 'auto';
         you.src = URL.createObjectURL(stream);
+        you.muted=true;
         you.play();
-        largeVideo(you);
+       // largeVideo(you); //To avoid noise
       //videos.push(document.getElementById('you'));
       //rtc.attachStream(stream, 'you');
       //subdivideVideos();
@@ -230,7 +236,8 @@ function init() {
     document.getElementById(clone.id).setAttribute("class", "remote");
     rtc.attachStream(stream, clone.id);
     subdivideVideos();
-    largeVideo(clone);
+   // largeVideo(clone); //To avoid noice
+
     // document.querySelectorAll('#smallScreenVideos .remote').onclick=function(){
     //   console.log('remote onclick');
     //   if(document.querySelector('#largeScreenVideo .remote')){
@@ -282,10 +289,10 @@ function init() {
     //     }
     //  subdivideVideos();    
     // });
-  $('#smallScreenVideos video[id^="remote"]').click(function(){
-      console.log('remote onclick');
-      largeVideo(this);
-      });
+  // $('#smallScreenVideos video[id^="remote"]').click(function(){
+  //     console.log('remote onclick');
+  //     largeVideo(this);
+  //     });
   });
   rtc.on('disconnect stream', function(data) {
     console.log('remove ' + data);
@@ -307,13 +314,16 @@ function init() {
 //   });
 // });
 
-$('#you').click(function(){
-  largeVideo(this);
-});
-function largeVideo(current){
-      $('#remote-large').attr('src',$(current).attr('src'));
-      $('#remote-large').css({'display':'block','max-width':'100%','height':'auto','border':'0.4em solid #eeeeee'});
-}
+//Displaying large video onclick
+// $('#you').click(function(){
+//   largeVideo(this);
+// });
+// function largeVideo(current){
+//       $('#remote-large').attr('src',$(current).attr('src'));
+//       $('#remote-large').css({'display':'block','max-width':'95%','height':'auto','border':'0.4em solid #eeeeee'});
+// }
+//end
+
 window.onresize = function(event) {
   subdivideVideos();
 };
