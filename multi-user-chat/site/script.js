@@ -208,7 +208,7 @@ function init() {
       var you=document.getElementById('you');
         
         //var dim=Math.floor(window.innerHeight/4); 
-        you.style.maxWidth = '100%';
+        you.style.maxWidth = '90%';
         you.style.height = 'auto';
         you.src = URL.createObjectURL(stream);
         you.muted=true;
