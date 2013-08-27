@@ -9,13 +9,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  /*background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(238,238,238,0)));
-  background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
-  background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
-  background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
-  background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00eeeeee',GradientType=0 );*/
+ 
 }
 /*@media screen and (min-width: 1224px){
   #videos{
@@ -47,7 +41,7 @@ body {
   z-index: 0;
 }*/
 
-#chatbox {
+/*#chatbox {
   position: absolute;
   right: 20px;
   bottom: 0px;
@@ -77,7 +71,7 @@ body {
   margin-bottom: 0px;
   padding: 5px 10px;
   width: 255px;
-}
+}*/
 
 .flip {
 -webkit-transform: rotateY(180deg);
@@ -127,12 +121,14 @@ body {
 header.heading{
   border: 0.1em solid #eeeeee;
   padding: 0.2em; 
+  height: 50px;
+
 }
 
 header.heading #roomInfo{
   
   font-size: 1.2em;
-  padding: 0.7em;
+  /*padding: 0.7em;*/
   vertical-align: top;
   /*min-height: 30px;*/
 }
@@ -143,43 +139,22 @@ header.heading #roomInfo img{
   margin-right: 1em;
   cursor: pointer;
  }
-#videos{
-  /*border: 0.1em solid  #eeeeee;*/
-  /*padding: 0.2em;*/
-   /*text-align: justify;
-  -ms-text-justify: distribute-all-lines;
-   text-justify: distribute-all-lines;*/
-  position: relative;
-  width: 52%;
-  height:53%;
-  margin: 0 auto;
-  border: 0.7em solid #fafafa;
-  padding: 0.3em;
-  background: #4e4e4e;
-  overflow: hidden;
-  -moz-box-shadow: 0 0 0.7em rgba(0,0,0,0.2);
-  -webkit-box-shadow: 0 0 0.7em rgba(0,0,0,0.2);
-  box-shadow: 0 0 0.7em rgba(0,0,0,0.2);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Color=#4e4e4e, direction=120, strength=5)";
-  filter: progid:DXImageTransform.Microsoft.Shadow(Color=#4e4e4e, direction=120, strength=5);
-
-}
-/*#videos #largeScreenVideo{
-
-}*/
-#videos #smallScreenVideos{
  
-  width: 30%;
-  overflow-y: auto;
-  /*position: absolute;
-  height: 100%;*/
-  float: right;
-  /*position: absolute;*/
-  
-  height:100%;
-  /*position: relative;*/
+#videos{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 0;
+
 
 }
+
+/*#smallScreenVideos{
+  position: absolute;
+  
+}*/
 
 header{
   background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,0) 100%);
@@ -188,26 +163,6 @@ header{
   background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
   background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
   background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00eeeeee',GradientType=0 );
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#00eeeeee',GradientType=0 );*/
 }
-#videos #smallScreenVideos video,#you{
-border: 0.3em solid #eeeeee;
 
-}
-#videos #largeScreenVideo{
-  float: left;
-  width:70%;
-  height: 100%;
-  overflow-y:auto;
-  
-  /*position: absolute;
-  height:700px; */
-  /*position: absolute;
-  height: 100%;*/
-  /*height: auto;*/
-}
-/*#remote-large{
- border: 0.4em solid #eeeeee; 
- width: 100% !important;
-  height: auto !important;
-}*/

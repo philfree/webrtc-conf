@@ -1,37 +1,42 @@
 var videos = [];
 var PeerConnection = window.PeerConnection || window.webkitPeerConnection00 || window.webkitRTCPeerConnection || window.mozRTCPeerConnection || window.RTCPeerConnection;
 
-// function getNumPerRow() {
-//   var len = videos.length;
-//   var biggest;
+function getNumPerRow() {
+  var len = videos.length;
+  var biggest;
 
-//   // Ensure length is even for better division.
-//   if(len % 2 === 1) {
-//     len++;
-//   }
+  // Ensure length is even for better division.
+  if(len % 2 === 1) {
+    len++;
+  }
 
-//   biggest = Math.ceil(Math.sqrt(len));
-//   while(len % biggest !== 0) {
-//     biggest++;
-//   }
-//   return biggest;
-// }
+  biggest = Math.ceil(Math.sqrt(len));
+  while(len % biggest !== 0) {
+    biggest++;
+  }
+  return biggest;
+}
 
 function subdivideVideos() {
-  //var perRow = getNumPerRow();
-  //var numInRow = 0;
+  var perRow = getNumPerRow();
+  var numInRow = 0;
   for(var i = 0, len = videos.length; i < len; i++) {
     var video = videos[i];
     setWH(video, i);
-   // numInRow = (numInRow + 1) % perRow;
+    numInRow = (numInRow + 1) % perRow;
   }
 }
 
 function setWH(video, i) {
-  //var perRow = getNumPerRow();
-  //var perColumn = Math.ceil(videos.length / perRow);
- // var width = Math.floor((window.innerWidth) / perRow);
- // var height = Math.floor((window.innerHeight - 190) / perColumn);
+  var perRow = getNumPerRow();
+  var perColumn = Math.ceil(videos.length / perRow);
+  var width = Math.floor((window.innerWidth) / perRow);
+  var height = Math.floor((window.innerHeight - 260) / perColumn);
+  video.width = width;
+  video.height = height;
+  video.style.position = "absolute";
+  video.style.left = (i % perRow) * width + "px";
+  video.style.top = Math.floor(i / perRow) * height + "px";
   // var smallSideWidth=parseInt($('#videos').css('width').slice(0,-2));
   // var height=Math.floor(smallSideWidth*0.25*0.75);
   // var width=Math.floor(smallSideWidth*0.25);
@@ -41,13 +46,12 @@ function setWH(video, i) {
   // video.style.height = 'auto';
   // video.style.position = "";
   // video.style.top='';
-  //video.style.left = (i % perRow) * width + "px";
+  //
   // video.style.left = '';
   // video.style.display = 'block';
  // video.style.right = '2px';
-  //video.style.top = Math.floor(i / perRow) * height + "px";
  // video.style.top = Math.floor(i* height)+ 2 + "px";
-video.setAttribute('style','max-width:90%;height:auto;display:block;');
+//video.setAttribute('style','max-width:90%;height:auto;display:block;');
 
 }
 
@@ -55,13 +59,13 @@ function cloneVideo(domId, socketId) {
   var video = document.getElementById(domId);
   var clone = video.cloneNode(false);
   clone.id = "remote" + socketId;
-  //document.getElementById('videos').appendChild(clone);
-  document.getElementById('smallScreenVideos').appendChild(clone);
+  document.getElementById('videos').appendChild(clone);
+  //document.getElementById('smallScreenVideos').appendChild(clone);
   videos.push(clone);
   return clone;
 }
 
-function removeVideo(socketId) {
+function removeVideo(socketId) {  
   var video = document.getElementById('remote' + socketId);
   if(video) {
     videos.splice(videos.indexOf(video), 1);
@@ -74,23 +78,24 @@ function removeVideo(socketId) {
       //subdivideVideos();
   }
 }
+//Message Chat
+// function addToChat(msg, color) {
+//   var messages = document.getElementById('messages');
+//   msg = sanitize(msg);
+//   if(color) {
+//     msg = '<span style="color: ' + color + '; padding-left: 15px">' + msg + '</span>';
+//   } else {
+//     msg = '<strong style="padding-left: 15px">' + msg + '</strong>';
+//   }
+//   messages.innerHTML = messages.innerHTML + msg + '<br>';
+//   messages.scrollTop = 10000;
+// }
 
-function addToChat(msg, color) {
-  var messages = document.getElementById('messages');
-  msg = sanitize(msg);
-  if(color) {
-    msg = '<span style="color: ' + color + '; padding-left: 15px">' + msg + '</span>';
-  } else {
-    msg = '<strong style="padding-left: 15px">' + msg + '</strong>';
-  }
-  messages.innerHTML = messages.innerHTML + msg + '<br>';
-  messages.scrollTop = 10000;
-}
+// function sanitize(msg) {
+//   return msg.replace(/</g, '&lt;');
+// }
 
-function sanitize(msg) {
-  return msg.replace(/</g, '&lt;');
-}
-
+//check afterwards
 // function initFullScreen() {
 //   var button = document.getElementById("fullscreen");
 //   button.addEventListener('click', function(event) {
@@ -208,8 +213,8 @@ function init() {
       var you=document.getElementById('you');
         
         //var dim=Math.floor(window.innerHeight/4); 
-        you.style.maxWidth = '90%';
-        you.style.height = 'auto';
+        // you.style.maxWidth = '90%';
+        // you.style.height = 'auto';
         you.src = URL.createObjectURL(stream);
         you.muted=true;
         you.play();
@@ -221,13 +226,14 @@ function init() {
   } else {
     alert('Your browser is not supported or you have to turn on flags. In chrome you go to chrome://flags and turn on Enable PeerConnection remember to restart chrome');
   }
-
+  //Has to be changed
    if(!window.location.hash){
      newRoomLogic();
   }
+
   var room = window.location.hash.slice(1);
 
-  $('#roomInfo span').append(room);
+  $('#roomInfo span.room').append(room);
   rtc.connect("ws:" + window.location.href.substring(window.location.protocol.length).split('#')[0], room);
 
   rtc.on('add remote stream', function(stream, socketId) {
@@ -300,7 +306,7 @@ function init() {
   });
  // initFullScreen();
   initNewRoom();
- // initChat();
+  //initChat();
 }
 
 //   $(document).ready(function(){

@@ -2,7 +2,7 @@
   <head>
     <title>Multi User Chat</title>
     <link type="text/css" href="/style.css" rel="stylesheet"></link>
-       <script src="/jquery.10.1.js"></script>
+    <script src="/jquery.10.1.js"></script>
     <script src="/webrtc.io.js"></script>
   </head>
   <body onload="init()">
@@ -25,24 +25,29 @@
     </div> -->
     <header class="heading">
       <nav id='roomInfo' title='Create New Room'>
+        <!-- <span id="fullscreen" class="button">Enter Full Screen</span> -->
         <img id="newRoom" src="/home-icon.png" alt="Create New Room"/>
         
-        <span>Room Name : </span>
+        <span class='room'>Room Name : </span>
       
       </nav>
-
-      
     </header>
+    
     <section id='videos'>
-    <section id='largeScreenVideo'>
+     
+    <!-- <section id='largeScreenVideo'>
       <video id="you" autoplay controls></video>
-      <!-- <video id='remote-large' autoplay controls style='display:none;'></video> -->
+      <video id='remote-large' autoplay controls style='display:none;'></video>
     </section>
     <aside id='smallScreenVideos'>
       
        
       
-    </aside>
+    </aside> -->
+    </section>
+    <section id='smallScreenVideos'>
+       <video id="you" class="flip" autoplay width="263" height="200" style="position: absolute; left: 0px; bottom: 0px;">
+      </video>
     </section>
     <script src="/script.js"></script>
   </body>
