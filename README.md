@@ -12,11 +12,13 @@ WebRTC is supported in the following browsers.
         Opera Mobile 12
 
 In order to use group video conference , we need to install (on server)
+
 	1. NodeJS ( https://github.com/joyent/node/wiki/Installation )
 	2. Express framework ( http://expressjs.com/ )
 	3. Webrtc.io ( https://github.com/webRTC/webRTC.io )
 
 To run group video conference , below are the steps
+
 	1. Do a git clone : https://github.com/philfree/webrtc-conf.git . A folder “webrtc-conf” is created . This can be cloned anywhere in the system and not necessarily the webserver path like “/var/www” in case of linux / apache2 . The node.js helps in creating a virtual server , on top of which the group conference application runs .
 	2. On entering the application directory , we find a folder “multi-user-chat” . Within that we find a directory labelled “site” . 
 	3. Inside this directory , run the node command from the terminal : node server.js . This starts the server . 
